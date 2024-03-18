@@ -26,6 +26,7 @@ const Tutorials = () => {
     return (
         <div>
             <h1 className="text-center">Welcome to Exe Tutorials</h1>
+            <button type="button" className="btn btn-primary">Tutorials</button>
             {/* <table className="table table-bordered">
                 <thead>
                     <tr>

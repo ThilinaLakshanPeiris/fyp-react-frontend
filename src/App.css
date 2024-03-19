@@ -30,12 +30,7 @@
 .errmsg{
   color: red;
 }
-.header{
-  width: 100%;
-  background-color: blue;
-  color: #fff;
-  padding: 1%;
-}
+
 a{
   text-decoration: none !important;
   color: white !important;
@@ -48,14 +43,38 @@ app-check{
 }
 .header{
   width: 100%;
-  background-color: blue;
+  background-color: #ffa200;
   color: #fff;
   padding: 1%;
+}
+.navitem{
+  margin-left: 8%;
+  /* margin-right: 10%; */
+  /* background-color: blue; */
+  text-align: "center";
+  color: yellow;
+  /* padding: 1%; */
 }
 a{
   text-decoration: none !important;
   color: white !important;
   padding: 2px;
+}
+.bgimg{
+  background-image: url(./images/homebg.png);
+  background-size: cover ;
+  background-position: center;
+  min-height: 100vh;
+  background-attachment: fixed;
+          /* backgroundImage: url(${backgroundImage}),
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          minHeight: "100vh", // Ensure the image covers the entire viewport height
+          backgroundAttachment: "fixed", */
+}
+.content{
+  padding-top: 8%;
+  /* paddingTop :"8%" */
 }
 
 @keyframes App-logo-spin {
@@ -66,3 +85,4 @@ a{
     transform: rotate(360deg);
   }
 }
+

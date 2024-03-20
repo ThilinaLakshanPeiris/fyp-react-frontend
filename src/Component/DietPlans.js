@@ -1,44 +1,72 @@
-import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+// App.js
+import React from "react";
+import "../App";
+import axios from "axios"; // uimport axios
 import Container from "react-bootstrap/Container";
+class Dietplans extends React.Component {
 
+  // Constructor
+  constructor(props) {
+    super(props);
+    this.state = {
+      items: [],
+      DataisLoaded: false,
+    };
+  }
 
-const Dietplans = () => {
-    const usenavigate = useNavigate();
-    const [customerlist, listupdate] = useState(null);
-   
-    useEffect(() => {
-       
+  // ComponentDidMount is used to
+  // execute the code
+  componentDidMount() {
+    axios.get("https://jsonplaceholder.typicode.com/users").then((res) => {
+      this.setState({
+        items: res.data,
+        DataisLoaded: true,
+      });
+    });
+  }
+  render() {
+    const { DataisLoaded, items } = this.state;
 
-        // let jwttoken = sessionStorage.getItem('jwttoken');
-        // fetch("https://localhost:44308/Customer", {
-        //     headers: {
-        //         'Authorization': 'bearer ' + jwttoken
-        //     }
-        // }).then((res) => {
-        //     return res.json();
-        // }).then((resp) => {
-        //     listupdate(resp);
-        // }).catch((err) => {
-        //     console.log(err.messsage)
-        // });
-
-    }, []);
+    if (!DataisLoaded)
+      return (
+        <div>
+          <div className="bgimg">
+            <Container className="content">
+              <h1 className="text-center text-light">Welcome to Dietplans</h1>
+              <button type="button" className="btn btn-primary">
+                Dietplans
+              </button>
+            </Container>
+          </div>
+        </div>
+      );
 
     return (
-        <div>
-            <div className="bgimg">
-        <Container className = "content">
-                 <h1 className="text-center text-light">Welcome to Dietplans</h1>
-             <button type="button" className="btn btn-primary">Dietplans</button>
-            
+      <div className="bgimg">
+        <Container className="content">
+          <h1 className="geeks">Geeks for Geeks</h1>
+          <h3>Fetch data from an api in react</h3>
+          <div className="container1">
+            {items.map((item) => (
+              <div className="item">
+                <ol key={item.id}>
+                  <div>
+                    <strong>{"User_Name : "}</strong>
+                    {item.username},
+                  </div>
+                  <div>Full_Name : {item.name},</div>
+                  <div>Address : {item.address.street},</div>
+                  <div>User_Email : {item.email}</div>
+                </ol>
+              </div>
+            ))}
+          </div>
         </Container>
-
-           
-        </div>
-        </div>
-        
+      </div>
     );
+  }
 }
 
 export default Dietplans;
+
+

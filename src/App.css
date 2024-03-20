@@ -77,6 +77,40 @@ a{
   /* paddingTop :"8%" */
 }
 
+/* ______________________________________________________________________ */
+
+/* App.css*/
+.App {
+  text-align: center;
+  color: #ffa200;
+}
+.container1 {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.item {
+  min-width: 33rem;
+  text-align: left;
+}
+
+.geeks {
+  color: green;
+}
+/* ______________________________________________________________________ */
+/* _______________________footer_________________________________________ */
+.footerLinkItems {
+  text-decoration: none;
+  font-size: x-large;
+  color: gold;
+  padding: 1.8rem 0 0 0;
+}
+/* ______________________________________________________________________ */
+
+
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

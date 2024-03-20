@@ -7,7 +7,7 @@ import gymlogo from "../images/gymlogo.png";
 import Nav from "react-bootstrap/Nav";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import "../App.css";
-// import "./App.css";
+
 
 const Appheader = () => {
   const [displayusername, displayusernameupdate] = useState("");

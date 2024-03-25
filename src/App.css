@@ -1,4 +1,214 @@
-.App {
+.bgimg{
+  background-image: url(./images/homebg.png);
+  background-size: cover ;
+  background-position: center;
+  /* min-height: 100vh; */
+  display: flex;
+  align-items: center;
+  background-attachment: fixed;
+}
+.content{
+  padding-top: 8%;
+}
+
+/* ______________________________________________________________________ */
+
+
+.container1 {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.item {
+  min-width: 33rem;
+  text-align: left;
+}
+
+.geeks {
+  color: green;
+}
+/* ______________________________________________________________________ */
+/* _______________________footer_________________________________________ */
+.footerLinkItems {
+  text-decoration: none;
+  font-size: x-large;
+  color: gold;
+  padding: 1.8rem 0 0 0;
+}
+/* ______________________________________________________________________ */
+
+
+.login-container-main {
+  margin-top: 110px;
+}
+
+.login-btn,
+.newUser-btn {
+  font-size: 1.5rem;
+  border-radius: 10px;
+  border: none;
+  color: white;
+  padding: .5rem;
+  font-weight: 600;
+  transition: all 0.4s ease;
+}
+
+.login-btn {
+  background-color: rgb(20, 159, 20);
+}
+
+.login-btn:hover {
+  background-color: rgb(16, 114, 16);
+}
+
+.newUser-btn {
+  background-color: rgb(60, 60, 237);
+}
+
+.newUser-btn:hover {
+  background-color: rgb(26, 26, 155);
+}
+
+/* -----------------------Register page------------------------ */
+
+.signup-container-main {
+  margin-top: 60px;
+}
+
+.register-btn,
+.cancel-btn {
+  font-size: 1.5rem;
+  border-radius: 10px;
+  border: none;
+  color: white;
+  padding: .5rem;
+  font-weight: 600;
+  transition: all 0.4s ease;
+}
+
+.cancel-btn {
+  background-color: rgb(206, 37, 37);
+}
+
+.cancel-btn:hover {
+  background-color: rgb(141, 9, 9);
+}
+
+.register-btn {
+  background-color: rgb(60, 60, 237);
+}
+
+.register-btn:hover {
+  background-color: rgb(26,26,155);
+}
+
+/* -----------------------navbar------------------------ */
+
+.navbar {
+  background-color: black;
+}
+
+.navbar .navbar-logo {
+  display: block;
+  height: 4rem;
+  width: 100%;
+}
+
+.navbar .navbar-menu-container {
+  max-width: min-content;
+  align-items: center;
+}
+
+.navbar .navbar-menu-items {
+  padding: .6rem;
+  color: white;
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  transition: all 0.5s ease;
+  margin: .7rem;
+}
+
+.navbar .navbar-menu-items:hover {
+  color: goldenrod;
+  border-bottom-style: solid;
+}
+
+.dropdown-user {
+  background-color: goldenrod;
+  font-weight: 600;
+  border-radius: 10px;
+}
+
+.navbar .navbar-menu-container-2 .navbar-menu-items-2 {
+  color: white;
+  transition: all 0.4s ease;
+}
+
+.navbar .navbar-menu-container-2 .navbar-menu-items-2:hover {
+  color: goldenrod;
+  transition: all 0.4s ease;
+  -webkit-transition: all 0.4s ease;
+  -moz-transition: all 0.4s ease;
+  -ms-transition: all 0.4s ease;
+  -o-transition: all 0.4s ease;
+}
+/* -----------------------navbar------------------------ */
+/* -----------------------main Home page------------------------ */
+.main-home-container {
+  margin-top: 1.6rem;
+}
+
+.home-container {
+  max-width: 100%;
+  width: 92%;
+  /* align-items: center; */
+  padding: 2rem;
+  margin: 2rem;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 1rem;
+}
+
+.deadLiftPic {
+  max-width: 100%;
+  height: 100%;
+  display: block;
+  border-radius: 1rem;
+  margin-left: 2rem;
+}
+
+.try-now-btn {
+  font-size: 1.8rem;
+  font-weight: 500;
+  padding: .5rem;
+  border-radius: .6rem;
+  color: goldenrod;
+  background-color: black;
+  border-style: solid;
+  border-color: goldenrod;
+  border-width: .2rem;
+  transition: all 0.4s ease;
+}
+
+.try-now-btn:hover {
+  color: white;
+  background-color: goldenrod;
+}
+
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* ---------------------unwanted remove this -------------------- */
+/* .App {
   text-align: left;
 }
 
@@ -51,72 +261,7 @@ app-check{
   margin-left: 8%;
   /* margin-right: 10%; */
   /* background-color: blue; */
-  text-align: "center";
-  color: yellow;
+  /* text-align: "center"; */
+  /* color: yellow; */
   /* padding: 1%; */
-}
-a{
-  text-decoration: none !important;
-  color: white !important;
-  padding: 2px;
-}
-.bgimg{
-  background-image: url(./images/homebg.png);
-  background-size: cover ;
-  background-position: center;
-  min-height: 100vh;
-  background-attachment: fixed;
-          /* backgroundImage: url(${backgroundImage}),
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          minHeight: "100vh", // Ensure the image covers the entire viewport height
-          backgroundAttachment: "fixed", */
-}
-.content{
-  padding-top: 8%;
-  /* paddingTop :"8%" */
-}
-
-/* ______________________________________________________________________ */
-
-/* App.css*/
-.App {
-  text-align: center;
-  color: #ffa200;
-}
-.container1 {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.item {
-  min-width: 33rem;
-  text-align: left;
-}
-
-.geeks {
-  color: green;
-}
-/* ______________________________________________________________________ */
-/* _______________________footer_________________________________________ */
-.footerLinkItems {
-  text-decoration: none;
-  font-size: x-large;
-  color: gold;
-  padding: 1.8rem 0 0 0;
-}
-/* ______________________________________________________________________ */
-
-
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
+/* } */

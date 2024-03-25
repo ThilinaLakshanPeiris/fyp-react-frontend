@@ -52,8 +52,6 @@ const Register = () => {
 
     const handlesubmit = (e) => {
             e.preventDefault();
-//  console.log(regobj);
-            // let regobj = { id, fname, lname, password, email, phone, gender };
             let regobj = {
                 "username": id,
                 "password": password,
@@ -63,7 +61,6 @@ const Register = () => {
                 "last_name": lname
             };
 
-            // let regobj = { id, name, password, email, phone, country, address, gender };
             if (IsValidate()) {
             console.log(regobj);
             const url = 'http://127.0.0.1:8000/WebApp/register/';
@@ -82,91 +79,118 @@ const Register = () => {
     }
     return (
         <div>
-            <div className="offset-lg-3 col-lg-6">
-                <form className="container" onSubmit={handlesubmit}>
-                    <div className="card">
-                        <div className="card-header">
-                            <h1>User Registeration</h1>
-                        </div>
-                        <div className="card-body">
-
-                            <div className="row">
-                                <div className="col-lg-6">
-                                    <div className="form-group">
-                                        <label>User Name <span className="errmsg">*</span></label>
-                                        <input value={id} onChange={e => idchange(e.target.value)} className="form-control"></input>
-                                    </div>
-                                </div>
-                                <div className="col-lg-6">
-                                    <div className="form-group">
-                                        <label>Password <span className="errmsg">*</span></label>
-                                        <input value={password} onChange={e => passwordchange(e.target.value)} type="password" className="form-control"></input>
-                                    </div>
-                                </div>
-                                <div className="col-lg-6">
-                                    <div className="form-group">
-                                        <label>First Name <span className="errmsg">*</span></label>
-                                        <input value={fname} onChange={e => fnamechange(e.target.value)} className="form-control"></input>
-                                    </div>
-                                </div>
-                                <div className="col-lg-6">
-                                    <div className="form-group">
-                                        <label>Last Name <span className="errmsg">*</span></label>
-                                        <input value={lname} onChange={e => lnamechange(e.target.value)} className="form-control"></input>
-                                    </div>
-                                </div>
-                                <div className="col-lg-6">
-                                    <div className="form-group">
-                                        <label>Email <span className="errmsg">*</span></label>
-                                        <input value={email} onChange={e => emailchange(e.target.value)} className="form-control"></input>
-                                    </div>
-                                </div>
-                                <div className="col-lg-6">
-                                    <div className="form-group">
-                                        <label>Phone <span className="errmsg"></span></label>
-                                        <input value={phone} onChange={e => phonechange(e.target.value)} className="form-control"></input>
-                                    </div>
-                                </div>
-                                {/* <div className="col-lg-6">
-                                    <div className="form-group">
-                                        <label>Country <span className="errmsg">*</span></label>
-                                        <select value={country} onChange={e => countrychange(e.target.value)} className="form-control">
-                                            <option value="india">India</option>
-                                            <option value="usa">USA</option>
-                                            <option value="singapore">Singapore</option>
-                                        </select>
-                                    </div>
-                                </div> */}
-                                {/* <div className="col-lg-12">
-                                    <div className="form-group">
-                                        <label>Address</label>
-                                        <textarea value={address} onChange={e => addresschange(e.target.value)} className="form-control"></textarea>
-                                    </div>
-                                </div> */}
-                                <div className="col-lg-6">
-                                    <div className="form-group">
-                                        <label>Gender</label>
-                                        <br></br>
-                                        <input type="radio" checked={gender === 'male'} onChange={e => genderchange(e.target.value)} name="gender" value="male" className="app-check"></input>
-                                        <label>Male</label>
-                                        <br></br>
-                                        <input type="radio" checked={gender === 'female'} onChange={e => genderchange(e.target.value)} name="gender" value="female" className="app-check"></input>
-                                        <label>Female</label>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                        </div>
-                        <div className="card-footer">
-                            <button type="submit" className="btn btn-primary">Register</button> 
-                            |<span> </span>
-                            <Link to={'/login'} className="btn btn-danger">Close</Link>
-                        </div>
-                    </div>
-                </form>
+            <div className="signup-container-main d-flex justify-content-center align-items-center">
+        <form
+          onSubmit={handlesubmit}
+          className="row justify-content-center pt-4 pb-4 shadow-lg rounded-4 w-50"
+        >
+          <div
+            className="text-center fs-1 fw-semibold"
+            style={{ color: "blue" }}
+          >
+            User Registration
+          </div>
+          <div className="row justify-content-evenly mt-3">
+            <div className="col-md-5 mt-2 mb-3">
+              <label className="form-label">First Name</label>
+              <input
+                type="text"
+                className="form-control"
+                value={fname}
+                onChange={(e) => fnamechange(e.target.value)}
+              />
             </div>
-
+            <div className="col-md-5 mt-2 mb-3">
+              <label className="form-label">Last Name</label>
+              <input
+                type="text"
+                className="form-control"
+                value={lname}
+                onChange={(e) => lnamechange(e.target.value)}
+              />
+            </div>
+          </div>
+          <div className="row justify-content-evenly">
+            <div className="col-md-4 mt-2 mb-3">
+              <label className="form-label">Username</label>
+              <input
+                type="text"
+                className="form-control"
+                value={id}
+                onChange={(e) => idchange(e.target.value)}
+              />
+            </div>
+            <div className="col-md-6 mt-2 mb-3">
+              <label className="form-label">Email</label>
+              <input
+                type="text"
+                className="form-control"
+                value={email}
+                onChange={(e) => emailchange(e.target.value)}
+              />
+            </div>
+          </div>
+          <div className="row justify-content-evenly">
+            <div className="col-md-5 mt-2 mb-3">
+              <label className="form-label">Password</label>
+              <input
+                type="password"
+                className="form-control"
+                value={password}
+                onChange={(e) => passwordchange(e.target.value)}
+              />
+            </div>
+            <div className="col-md-5 mt-2 mb-3">
+              <label className="form-label">Phone</label>
+              <input
+                type="text"
+                className="form-control"
+                value={phone}
+                onChange={(e) => phonechange(e.target.value)}
+              />
+            </div>
+          </div>
+          <div className="row justify-content-center">
+            <div className="col-md-3 form-check form-check-inline">
+              <input
+                className="form-check-input"
+                type="checkbox"
+                name="gender"
+                checked={gender === "male"}
+                onChange={(e) => genderchange(e.target.value)}
+                value="male"
+              />
+              <label className="form-check-label" for="inlineCheckbox1">
+                Male
+              </label>
+            </div>
+            <div className="col-md-3 form-check form-check-inline">
+              <input
+                className="form-check-input"
+                type="checkbox"
+                checked={gender === "female"}
+                onChange={(e) => genderchange(e.target.value)}
+                name="gender"
+                value="female"
+              />
+              <label className="form-check-label" for="inlineCheckbox2">
+                Female
+              </label>
+            </div>
+          </div>
+          <div className="col-md-8 row justify-content-around mt-4">
+            <button className="register-btn col-md-4" type="submit">
+              Register
+            </button>
+            <Link
+              className="cancel-btn text-center col-md-4 text-decoration-none"
+              to={"/login"}
+            >
+              Cancel
+            </Link>
+          </div>
+        </form>
+      </div>
 
         </div>
     );

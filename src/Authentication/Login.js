@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import backgroundImage from "../images/homebg.png";
+import { div } from "@tensorflow/tfjs";
 
 const Login = () => {
     const [username, usernameupdate] = useState('');
@@ -13,75 +14,37 @@ const Login = () => {
 sessionStorage.clear();
     },[]);
 
-    const ProceedLogin = (e) => {
+    async function ProceedLoginusingAPI(e) {
         e.preventDefault();
+    
+        let inputObj = { username: username, password: password };
+    
         if (validate()) {
-            ///implentation
-            // console.log('proceed');
-            const url = 'http://127.0.0.1:8000/WebApp/login/';
-            // fetch("http://localhost:8000/" + username).then((res) => {
-            fetch(url).then((res) => {
-                return res.json();
-            }).then((resp) => {
-                console.log(resp)
-                if (Object.keys(resp).length === 0) {
-                    toast.error('Please Enter valid username');
-                } else {
-                    if (resp.password === password) {
-                        toast.success('Success');
-                        sessionStorage.setItem('username',username);
-                        sessionStorage.setItem('userrole',resp.role);
-                        usenavigate('/Home')
-                    }else{
-                        toast.error('Please Enter valid credentials');
-                    }
-                }
-            }).catch((err) => {
-                toast.error('Login Failed due to :' + err.message);
+          try {
+            const response = await fetch("http://127.0.0.1:8000/WebApp/login/", {
+              method: "post",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(inputObj),
             });
-        }
-    }
+            if (response.ok) {
+              const data = await response.json();
+              console.log(data);
+              toast.success("Success");
+              sessionStorage.setItem("username", username);
+              sessionStorage.setItem("jwttoken", response.jwtToken);
+              usenavigate("/");
+            } else {
+              toast.error("Please Enter valid credentials");
+            }
+          } catch (err) {
+            toast.error("Login Failed due to :" + err.message);
+          }
+        } else {
+          // toast.error("Please fill out all the fields");
+        //   console.log("Please fill out all the fields!");
+        }
+      }
 
-    const ProceedLoginusingAPI = (e) => {
-        e.preventDefault();
-        if (validate()) {
-            ///implentation
-            // console.log('proceed');
-            let inputobj={"username": username,
-            "password": password};
-            // fetch("https://localhost:44308/User/Authenticate",{
-            fetch("http://127.0.0.1:8000/WebApp/login/",{
-                method:'POST',
-                headers:{'content-type':'application/json'},
-                body:JSON.stringify(inputobj)
-            }).then((res) => {
-                return res.json();
-            }).then((resp) => {
-                // console.log(resp)
-                if (Object.keys(resp).length === 0) {
-                    toast.error('Login failed, invalid credentials');
-                }else{
-                     toast.success('Success');
-                     sessionStorage.setItem('username',username);
-                     sessionStorage.setItem('jwttoken',resp.jwtToken);
-                   usenavigate('/')
-                }
-                // if (Object.keys(resp).length === 0) {
-                //     toast.error('Please Enter valid username');
-                // } else {
-                //     if (resp.password === password) {
-                //         toast.success('Success');
-                //         sessionStorage.setItem('username',username);
-                //         usenavigate('/')
-                //     }else{
-                //         toast.error('Please Enter valid credentials');
-                //     }
-                // }
-            }).catch((err) => {
-                toast.error('Login Failed due to :' + err.message);
-            });
-        }
-    }
     const validate = () => {
         let result = true;
         if (username === '' || username === null) {
@@ -95,32 +58,52 @@ sessionStorage.clear();
         return result;
     }
     return (
-        <div className="row">
-        <div className="offset-lg-3 col-lg-6" style={{ marginTop: '100px' }}>
-            {/* <form onSubmit={ProceedLogin} className="container"> */}
-            <form onSubmit={ProceedLoginusingAPI} className="container">
-                <div className="card">
-                    <div className="card-header">
-                        <h2>User Login</h2>
-                    </div>
-                    <div className="card-body">
-                        <div className="form-group">
-                            <label>User Name <span className="errmsg">*</span></label>
-                            <input value={username} onChange={e => usernameupdate(e.target.value)} className="form-control"></input>
-                        </div>
-                        <div className="form-group">
-                            <label>Password <span className="errmsg">*</span></label>
-                            <input type="password" value={password} onChange={e => passwordupdate(e.target.value)} className="form-control"></input>
-                        </div>
-                    </div>
-                    <div className="card-footer">
-                        <button type="submit" className="btn btn-primary">Login</button> |
-                        <Link className="btn btn-success" to={'/register'}>New User</Link>
-                    </div>
-                </div>
-            </form>
+        <div>
+            <div className="login-container-main d-flex justify-content-center align-items-center">
+        <form
+          onSubmit={ProceedLoginusingAPI}
+          className="row justify-content-center pt-4 pb-4 shadow-lg rounded-4 w-50"
+        >
+          <div
+            className="text-center fs-1 fw-semibold"
+            style={{ color: "green" }}
+          >
+            Login
+          </div>
+          <div className="col-md-9 mt-2 mb-3">
+            <label className="form-label">Username</label>
+            <input
+              type="text"
+              className="form-control"
+              value={username}
+              onChange={(e) => usernameupdate(e.target.value)}
+            />
+          </div>
+          <div className="col-md-9">
+            <label for="password" className="form-label">
+              Password
+            </label>
+            <input
+              type="password"
+              className="form-control"
+              value={password}
+              onChange={(e) => passwordupdate(e.target.value)}
+            />
+          </div>
+          <div className="col-md-8 row justify-content-around mt-5">
+            <button className="login-btn col-md-4" type="submit">
+              Login
+            </button>
+            <Link
+              className="newUser-btn text-center col-md-4 text-decoration-none"
+              to={"/register"}
+            >
+              New User
+            </Link>
+          </div>
+        </form>
+      </div>
         </div>
-    </div>
     );
 }
 

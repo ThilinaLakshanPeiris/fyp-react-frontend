@@ -207,6 +207,95 @@
 }
 
 
+/* -------------------training schedue-------------------- */
+.trainingForm .form-select:focus {
+  box-shadow: 0 0 0 3px rgba(218, 160, 2, 0.881);
+}
+
+.main-trainingPage-container {
+  margin-top: 1.9rem;
+}
+
+.main-training-load-container {
+  height: 350px;
+  overflow-y: scroll;
+}
+
+
+.training-data-items {
+  color: white;
+  background-color: rgb(38, 38, 38);
+  border-radius: 10px;
+  border-style: solid;
+  border-color: goldenrod;
+  border-width: 2px;
+  margin-bottom: 1rem;
+  transition: all 0.5s ease-out;
+  padding: 1rem;
+}
+
+.trainingForm .form-select option:checked {
+  background-color: #b67e06;
+  /* Change to your desired color */
+  color: #000000;
+  /* Change to your desired color */
+  font-weight: 400;
+}
+
+.trainingForm .form-select option:hover {
+  background-color: #b67e06;
+  /* Change to your desired color */
+}
+
+.trainingData-fade-in {
+  opacity: 0;
+  animation: fadeIn 0.7s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+      transform: translateY(-30px);
+      /* Move up slightly */
+  }
+
+  to {
+      opacity: 1;
+      transform: translateY(0);
+      /* Move back to original position */
+  }
+}
+
+.contactUsForm .form-control:focus {
+  box-shadow: 0 0 0 2px rgba(218, 160, 2, 0.88);
+}
+
+.contact-submit-btn {
+  font-size: 1.2rem;
+  padding: .4rem .5rem;
+  font-weight: 500;
+  border-radius: 8px;
+  border-width: 4px;
+  color: goldenrod;
+  border: none;
+  background-color: black;
+  transition: all 0.4s ease-out;
+  box-shadow: 0px 3px 13px rgba(231, 179, 8, 0.5);
+}
+
+.contact-submit-btn:hover {
+  color: white;
+  background-color: goldenrod;
+  box-shadow: 0px 3px 10px rgba(232, 179, 5, 0.3);
+  transition: all 0.4s ease-out;
+}
+
+@media(max-width: 768px) {
+  .main-training-load-container {
+      padding-top:2rem;}
+}
+
+/* --------------------- -------------------- */
 /* ---------------------unwanted remove this -------------------- */
 /* .App {
   text-align: left;
